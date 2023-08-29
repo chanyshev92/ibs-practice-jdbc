@@ -18,16 +18,12 @@ public class SqlTest extends BaseTests{
         //Предусловие: соединение с БД установлено,в БД есть непустая таблица food
         Assertions.assertFalse(foodsRepository.findAll().isEmpty(),
                 "Получена пустая таблица Food");
-        System.out.println(foodsRepository.findAll());
         //Добавить в таблицу food продукт с параметрами
         Food newProduct= Food.builder()
                 .food_name(foodName)
                 .food_type(foodType)
                 .food_exotic(exotic).build();
-        System.out.println(newProduct);
         foodsRepository.save(newProduct);
-        System.out.println(newProduct);
-        System.out.println(foodsRepository.findAll());
         //Проверить, что добавленный продукт присутствует в таблице
         Assertions.assertTrue(foodsRepository.checkByDescription(newProduct),
                 "Продукт с введенными данными не найден в таблице");
@@ -37,6 +33,5 @@ public class SqlTest extends BaseTests{
         //Проверить, что добавленный продукт удалился
         Assertions.assertFalse(foodsRepository.checkByDescription(newProduct),
                 "Продукт с введенными данными не удалился");
-        System.out.println(foodsRepository.findAll());
     }
 }

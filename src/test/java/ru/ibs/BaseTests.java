@@ -28,9 +28,6 @@ public class BaseTests {
      */
     @BeforeAll
     public static void beforeAll() {
-        /*dataSource=new DriverManagerDataSource(
-                "jdbc:h2:tcp://localhost:9092/mem:testdb",
-                "user","pass");*/
         Properties dbProperties = new Properties();
 
         try {
