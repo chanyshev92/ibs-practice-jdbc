@@ -21,9 +21,9 @@ public class FoodsRepositoryImplementationJdbc implements FoodsRepository {
 
     @Override
     public void save(Food product) {
-        jdbcTemplate.update(SQL_INSERT, product.getFood_name(), product.getFood_type(), product.getFood_exotic());
-        Object[] inserts = {product.getFood_name(), product.getFood_type(), product.getFood_exotic()};
-        product.setFood_id(jdbcTemplate.queryForObject("select max(FOOD_ID) from FOOD where FOOD_NAME=? and FOOD_TYPE=? and FOOD_EXOTIC =? ",Integer.TYPE,inserts));
+        jdbcTemplate.update(SQL_INSERT, product.getFoodName(), product.getFoodType(), product.getFoodExotic());
+        Object[] inserts = {product.getFoodName(), product.getFoodType(), product.getFoodExotic()};
+        product.setFoodId(jdbcTemplate.queryForObject("select max(FOOD_ID) from FOOD where FOOD_NAME=? and FOOD_TYPE=? and FOOD_EXOTIC =? ",Integer.TYPE,inserts));
     }
 
     @Override
@@ -33,15 +33,15 @@ public class FoodsRepositoryImplementationJdbc implements FoodsRepository {
 
     @Override
     public void delete(Food product) {
-        jdbcTemplate.update(SQL_DELETE_BY_DESCRIPTION, product.getFood_name(), product.getFood_type(), product.getFood_exotic());
+        jdbcTemplate.update(SQL_DELETE_BY_DESCRIPTION, product.getFoodName(), product.getFoodType(), product.getFoodExotic());
     }
 
     @Override
     public boolean checkByDescription(Food product) {
         return findAll()
                 .stream()
-                .anyMatch(food -> food.getFood_name().equals(product.getFood_name())
-                        && food.getFood_type().equals(product.getFood_type())
-                        && food.getFood_exotic() == product.getFood_exotic());
+                .anyMatch(food -> food.getFoodName().equals(product.getFoodName())
+                        && food.getFoodType().equals(product.getFoodType())
+                        && food.getFoodExotic() == product.getFoodExotic());
     }
 }

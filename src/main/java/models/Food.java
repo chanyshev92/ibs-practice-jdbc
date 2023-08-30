@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Food {
-    private int food_id;
-    private String food_name;
-    private String food_type;
-    private int food_exotic;
+    private int foodId;
+    private String foodName;
+    private String foodType;
+    private int foodExotic;
 }

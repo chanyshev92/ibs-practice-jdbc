@@ -20,9 +20,9 @@ public class SqlTest extends BaseTests{
                 "Получена пустая таблица Food");
         //Добавить в таблицу food продукт с параметрами
         Food newProduct= Food.builder()
-                .food_name(foodName)
-                .food_type(foodType)
-                .food_exotic(exotic).build();
+                .foodName(foodName)
+                .foodType(foodType)
+                .foodExotic(exotic).build();
         foodsRepository.save(newProduct);
         //Проверить, что добавленный продукт присутствует в таблице
         Assertions.assertTrue(foodsRepository.checkByDescription(newProduct),
